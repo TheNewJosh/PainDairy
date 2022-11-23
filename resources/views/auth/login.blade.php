@@ -45,7 +45,8 @@
                     <label class="form-check-label mb-0 ms-3" for="rememberMe">Remember me</label>
                   </div>
                   <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                    <!--<button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button> -->
+                    <a href="{{ url('dashboard')}}" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</a>
                   </div>
                   <p class="mt-4 text-sm text-center">
                     Don't have an account?
