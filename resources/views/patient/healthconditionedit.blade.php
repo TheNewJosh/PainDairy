@@ -12,28 +12,36 @@
             
             <div class="row">
                 <h2>Update Health Condition</h2>
-            <form class="row">
-                <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Name</label>
-                      <input type="text" class="form-control">
+            <form class="row" method="POST" action="{{ route('healthconditioneditadd')}}">
+                @csrf
+              <input type="hidden" name="id" value="{{ $data->id }}">
+                <div class="col-12 col-xl-12">
+                    <div class="input-group input-group-outline is-filled mb-3">
+                      <label class="form-label">Comments</label>
+                      <input type="text" value="{{ $data->doctor_comment }}" readonly class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline is-filled mb-3">
+                      <label class="form-label">Condition Name</label>
+                      <input type="text" name="condition_name" value="{{ $data->condition_name }}" required class="form-control">
+                    </div>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Date Diagnosed </label>
-                      <input type="text" class="form-control">
+                      <input type="date" name="date_diagnosed" value="{{ $data->date_diagnosed }}" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Medications </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="medications" value="{{ $data->medications }}" required class="form-control">
                     </div>
                 </div>
                 
                 <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
                 </div>
             </form>
             </div>

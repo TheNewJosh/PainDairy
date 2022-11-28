@@ -11,24 +11,25 @@
         <div class="card card-body mx-3 mx-md-4 mt-n6">
             
             <div class="row">
-            <form class="row">
+            <form class="row" method="POST" action="{{ route('reportpainadd')}}">
+              @csrf
                 <h2>Add a Pain Record</h2>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Where does your pain hurt? </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="where_hurt" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">What is the severity of your pain? </label>
-                      <input type="text" class="form-control">
+                      <input type="number" name="severity" max="10" min="1" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">What words best describe the pain you feel? </label>
-                      <select name="" class="form-control">
+                      <select name="describe_pain" class="form-control" required>
                         <option value=""></option>
                         <option value="Aching">Aching</option>
                         <option value="Dull">Dull</option>
@@ -40,9 +41,9 @@
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Type of Pain </label>
-                      <select name="" class="form-control">
+                      <select name="type_pain" class="form-control" required>
                         <option value=""></option>
                         <option value="Noiceptive (Arises from injury or rupture of a tissue)">Noiceptive (Arises from injury or rupture of a tissue)</option>
                         <option value="Neuropathic(Nerve Irritation)">Neuropathic(Nerve Irritation)</option>
@@ -52,9 +53,9 @@
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">What Factor aggravated your pain?  </label>
-                      <select name="" class="form-control">
+                      <select name="factor_pain" class="form-control" required>
                         <option value=""></option>
                         <option value="Lack of sleep">Lack of sleep</option>
                         <option value="Clothing">Clothing</option>
@@ -67,15 +68,15 @@
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">How long has your Pain Lasted ? (Day) </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="pain_lasted" class="form-control" required>
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">What your diet-like?  </label>
-                      <select name="" class="form-control">
+                      <select name="what_diet" class="form-control" required>
                         <option value=""></option>
                         <option value="Vegan">Vegan</option>
                         <option value="Low-carb">Low-carb</option>
@@ -87,26 +88,26 @@
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">How long has your Pain Lasted ? (Day) </label>
-                      <input type="text" class="form-control">
+                    <div class="input-group input-group-outline mb-3 is-filled">
+                      <label class="form-label">What Medications have you used?  </label>
+                      <input type="text" name="what_medications" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
-                      <label class="form-label">Do you have any allergy?  </label>
-                      <input type="text" class="form-control">
+                    <div class="input-group input-group-outline mb-3 is-filled">
+                      <label class="form-label">Do you have any allergy? Please state </label>
+                      <input type="text" name="have_allergy" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Other Symptoms </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="symptoms" required class="form-control">
                     </div>
                 </div>
 
                 <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
                 </div>
             </form>
             </div>

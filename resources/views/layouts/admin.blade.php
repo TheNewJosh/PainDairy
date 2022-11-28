@@ -67,12 +67,16 @@
             </div>
             <div class="sidenav-footer position-absolute w-100 bottom-0 ">
             <div class="mx-3">
-                <a class="btn bg-gradient-primary mt-4 w-100" href="{{ url('login')}}" type="button">Logout</a>
+                <a class="btn bg-gradient-primary mt-4 w-100" href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
             </div>
             </div>
         </aside>
 
         @yield('content')
+
+        <form method="post" action="{{ route('logout')}}" id="logout-form">
+            @csrf
+        </form>
 
         <!--   Core JS Files   -->
         <script src="{{ asset('assets/js/core/popper.min.js')}}"></script>
@@ -92,5 +96,10 @@
         <script async defer src="https://buttons.github.io/buttons.js"></script>
         <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
         <script src="{{ asset('assets/js/material-dashboard.min.js')}}"></script>
+        @if(session()->get('sucess'))
+        <script>
+        alert("{{session()->get('sucess')}}");
+        </script>
+        @endif
     </body>
 </html>

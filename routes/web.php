@@ -13,65 +13,41 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
 
-Route::get('/dashboard', function () {
-    return view('patient.dashboard');
-});
+Route::get('/dashboard', [App\Http\Controllers\PatientController::class, 'dashboard'])->name('dashboard'); 
 
-Route::get('/reportpain', function () {
-    return view('patient.reportpain');
-});
+Route::get('/reportpain', [App\Http\Controllers\PatientController::class, 'reportpain'])->name('reportpain'); 
+Route::post('/reportpainadd', [App\Http\Controllers\PatientController::class, 'reportpainadd'])->name('reportpainadd'); 
 
-Route::get('/reportpainedit', function () {
-    return view('patient.reportpainedit');
-});
+Route::get('/reportpainedit/{id}/edit', [App\Http\Controllers\PatientController::class, 'reportpainedit'])->name('reportpainedit'); 
+Route::post('/reportpaineditadd', [App\Http\Controllers\PatientController::class, 'reportpaineditadd'])->name('reportpaineditadd'); 
 
-Route::get('/healthcondition', function () {
-    return view('patient.healthcondition');
-});
+Route::get('/healthcondition', [App\Http\Controllers\PatientController::class, 'healthcondition'])->name('healthcondition'); 
+Route::post('/healthconditionadd', [App\Http\Controllers\PatientController::class, 'healthconditionadd'])->name('healthconditionadd'); 
 
-Route::get('/healthconditionedit', function () {
-    return view('patient.healthconditionedit');
-});
+Route::get('/healthconditionedit/{id}/edit', [App\Http\Controllers\PatientController::class, 'healthconditionedit'])->name('healthconditionedit'); 
+Route::post('/healthconditioneditadd', [App\Http\Controllers\PatientController::class, 'healthconditioneditadd'])->name('healthconditioneditadd');
 
-Route::get('/appointment', function () {
-    return view('patient.appointment');
-});
+Route::get('/appointment', [App\Http\Controllers\PatientController::class, 'appointment'])->name('appointment'); 
 
-Route::get('/profile', function () {
-    return view('patient.profile');
-});
+Route::get('/profile', [App\Http\Controllers\PatientController::class, 'profile'])->name('profile'); 
+Route::post('/profileadd', [App\Http\Controllers\PatientController::class, 'profileadd'])->name('profileadd');
 
-Route::get('/dashboarddoc', function () {
-    return view('doctor.dashboard');
-});
+Route::get('/dashboarddoc', [App\Http\Controllers\DoctorController::class, 'dashboard'])->name('dashboarddoc');
 
-Route::get('/reportpaindoc', function () {
-    return view('doctor.reportpain');
-});
+Route::get('/reportpaindoc', [App\Http\Controllers\DoctorController::class, 'reportpain'])->name('reportpaindoc');
+Route::get('/reportpaineditdoc/{id}/edit', [App\Http\Controllers\DoctorController::class, 'reportpainedit'])->name('reportpaineditdoc');
+Route::post('/reportpaindocadd', [App\Http\Controllers\DoctorController::class, 'reportpainadd'])->name('reportpaindocadd');
 
-Route::get('/reportpaineditdoc', function () {
-    return view('doctor.reportpainedit');
-});
+Route::get('/healthconditiondoc', [App\Http\Controllers\DoctorController::class, 'healthcondition'])->name('healthconditiondoc');
+Route::get('/healthconditioneditdoc/{id}/edit', [App\Http\Controllers\DoctorController::class, 'healthconditionedit'])->name('healthconditioneditdoc');
+Route::post('/healthconditiondocadd', [App\Http\Controllers\DoctorController::class, 'healthconditionadd'])->name('healthconditiondocadd');
 
-Route::get('/healthconditiondoc', function () {
-    return view('doctor.healthcondition');
-});
+Route::get('/appointmentdoc', [App\Http\Controllers\DoctorController::class, 'appointment'])->name('appointmentdoc');
+Route::post('/appointmentdocadd', [App\Http\Controllers\DoctorController::class, 'appointmentadd'])->name('appointmentdocadd');
 
-Route::get('/healthconditioneditdoc', function () {
-    return view('doctor.healthconditionedit');
-});
-
-Route::get('/appointmentdoc', function () {
-    return view('doctor.appointment');
-});
-
-Route::get('/appointmenteditdoc', function () {
-    return view('doctor.appointmentedit');
-});
+Route::get('/appointmenteditdoc/{id}/edit', [App\Http\Controllers\DoctorController::class, 'appointmentedit'])->name('appointmenteditdoc');
+Route::post('/appointmenteditdocadd', [App\Http\Controllers\DoctorController::class, 'appointmenteditadd'])->name('appointmenteditdocadd');
 
 Route::get('/profiledoc', function () {
     return view('doctor.profile');
@@ -99,4 +75,4 @@ Route::get('/patienteditadm', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\PatientController::class, 'dashboard'])->name('home');

@@ -29,6 +29,24 @@
                       </select>
                     </div>
                 </div>
+                <div class="col-12 col-xl-6">
+                    <div class="input-group input-group-outline is-filled mb-3">
+                      <label class="form-label">Email</label>
+                      <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <div class="input-group input-group-outline is-filled mb-3">
+                      <label class="form-label">Phone</label>
+                      <input type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <div class="input-group input-group-outline is-filled mb-3">
+                      <label class="form-label">Gender</label>
+                      <input type="text" class="form-control">
+                    </div>
+                </div>
                 
                 <div class="text-center">
                     <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>

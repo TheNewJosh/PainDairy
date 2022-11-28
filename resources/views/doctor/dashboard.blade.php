@@ -28,7 +28,7 @@
                 </div>
                 <hr class="dark horizontal my-0">
                 <div class="card-footer p-3">
-                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">5 </span>Total</p>
+                <p class="mb-0"><span class="text-success text-sm font-weight-bolder">{{$DoctorAppointment->count()}} </span>Total</p>
                 </div>
             </div>
             </div>             
@@ -48,29 +48,31 @@
                         <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Appointment Date</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Patient</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                             <th class="text-secondary opacity-7"></th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($DoctorAppointment as $dt)
                             <tr>
                             <td>
                                 <div class="d-flex px-2 py-1">
                                 <div class="d-flex flex-column justify-content-center">
-                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{$dt->appointments_date}}</span>
                                 </div>
                                 </div>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">Manager</p>
-                                <p class="text-xs text-secondary mb-0">Organization</p>
+                                <p class="text-xs font-weight-bold mb-0">{{$dt->code}}{{str_pad($dt->id,4,"0",STR_PAD_LEFT)}}</p>
+                                <p class="text-xs text-secondary mb-0">{{$dt->UserPatient->name}}</p>
                             </td>
                             <td class="align-middle text-center text-sm">
-                                <a href="{{ url('appointmenteditdoc')}}" class="badge badge-sm bg-gradient-success">View</a>
+                                <a href="{{ route('appointmenteditdoc', ['id' => $dt->id])}}" class="badge badge-sm bg-gradient-success">View</a>
                             </td>
                             </tr>
+                            @endforeach
                         </tbody>
                         </table>
                     </div>

@@ -12,41 +12,44 @@
             
             <div class="row">
                 <h2>Create Appointment</h2>
-            <form class="row">
+            <form class="row" method="POST" action="{{ route('appointmentdocadd')}}">
+              @csrf
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Patient  </label>
-                      <select name="" class="form-control">
+                      <select name="patient_id" required class="form-control">
                         <option value=""></option>
-                        <option value="1">John Ayo</option>
+                        @foreach($Patient as $dt)
+                        <option value="{{$dt->id}}">{{$dt->name}} {{$dt->user_no}}{{str_pad($dt->id,4,"0",STR_PAD_LEFT)}}</option>
+                        @endforeach
                       </select>
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Date</label>
-                      <input type="date" class="form-control">
+                      <input type="date" name="appointments_date" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Comment</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="comment" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Status  </label>
-                      <select name="" class="form-control">
+                      <select name="status" required class="form-control">
                         <option value=""></option>
-                        <option value="1">Pending</option>
-                        <option value="1">Seen</option>
+                        <option value="pending">Pending</option>
+                        <option value="seen">Seen</option>
                       </select>
                     </div>
                 </div>
                 
                 <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
                 </div>
             </form>
             </div>

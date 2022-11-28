@@ -17,40 +17,57 @@
                   <p class="mb-0">Enter your email and password to register</p>
                 </div>
                 <div class="card-body">
-                  <form role="form">
-                    <div class="input-group input-group-outline mb-3">
+                  <form role="form" method="POST" action="{{ route('register')}}">
+                    @csrf
+                    <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Full Name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="name" required value="{{old('name')}}" class="form-control">
                     </div>
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Gender</label>
-                      <select name="" class="form-control">
-                        <option value=""></option>
+                      <select name="gender" required class="form-control">
+                        <option value="{{old('gender')}}">{{old('gender')}}</option>
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                         <option value="other">other</option>
                       </select>
                     </div>
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Email</label>
-                      <input type="email" class="form-control">
+                      <input type="email" name="email" value="{{old('email')}}" required class="form-control">
                     </div>
-                    <div class="input-group input-group-outline mb-3">
+                    @error('email')
+                      <strong>{{ $message }}</strong><br><br><br>
+                    @enderror
+
+                    <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Phone</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="phone" value="{{old('phone')}}" class="form-control">
                     </div>
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline is-filled mb-3">
+                      <label class="form-label">User Type</label>
+                      <select name="user_type" class="form-control" required>
+                        <option value="{{old('user_type')}}">{{old('user_type')}}</option>
+                        <option value="patient">Patient</option>
+                        <option value="physician">Physician (Care Giver)</option>
+                      </select>
+                    </div>
+                    <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Password</label>
-                      <input type="password" class="form-control">
+                      <input type="password" name="password" required class="form-control">
                     </div>
+                    @error('password')
+                      <strong>{{ $message }}</strong><br><br><br>
+                    @enderror
+
                     <div class="form-check form-check-info text-start ps-0">
-                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked required>
                       <label class="form-check-label" for="flexCheckDefault">
                         I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
                       </label>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
+                      <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Sign Up</button>
                     </div>
                   </form>
                 </div>

@@ -13,60 +13,72 @@
             <div class="row">
                 <h2>Update Profile</h2>
                 <div class="avatar avatar-xl">
-                    <img src="{{ asset('assets/img/bruce-mars.jpg')}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
+                    <img src="{{ asset('assets/img/aasite/users-avatar')}}/{{$data->image}}" alt="profile_image" class="w-100 border-radius-lg shadow-sm">
                 </div>
-            <form class="row">
+            <form class="row" method="POST" action="{{ route('profileadd')}}" enctype="multipart/form-data">
+              @csrf
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Age</label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="age" value="{{ $data->age }}" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Weight(Kg) </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="weight" value="{{ $data->weight }}" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Height(cm) </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="height" value="{{ $data->height }}" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Address </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="address" value="{{ $data->address }}" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Nationality  </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="nationality" value="{{ $data->nationality }}" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">State </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="state" value="{{ $data->state }}" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Contact Number  </label>
-                      <input type="text" class="form-control">
+                      <input type="text" name="phone" value="{{ $data->phone }}" required class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
-                    <div class="input-group input-group-outline mb-3">
+                    <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Picture  </label>
-                      <input type="file" class="form-control">
+                      <input type="file" name="image" required class="form-control">
+                    </div>
+                </div>
+                <div class="col-12 col-xl-6">
+                    <div class="input-group input-group-outline mb-3 is-filled">
+                      <label class="form-label">Select a Doctor</label>
+                      <select name="doctor_res" required class="form-control">
+                        <option value="{{ $data->doctor_res }}">{{ $data->doctor_res }}</option>
+                        @foreach($doctor as $dt)
+                        <option value="{{$dt->id}}">{{$dt->name}}</option>
+                        @endforeach
+                      </select>
                     </div>
                 </div>
 
                 <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
                 </div>
             </form>
             </div>

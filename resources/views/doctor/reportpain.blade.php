@@ -37,22 +37,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($PainRecord as $dt)
                             <tr>
                             <td>
                                 <div class="d-flex px-2 py-1">
                                 <div class="d-flex flex-column justify-content-center">
-                                    <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                    <span class="text-secondary text-xs font-weight-bold">
+                                        {{$dt->created_at}}
+                                    </span>
                                 </div>
                                 </div>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">Manager</p>
-                                <p class="text-xs text-secondary mb-0">Organization</p>
+                                <p class="text-xs font-weight-bold mb-0">{{$dt->UserPatient->name}}</p>
+                                <p class="text-xs text-secondary mb-0">{{$dt->code}}{{str_pad($dt->id,4,"0",STR_PAD_LEFT)}}</p>
                             </td>
                             <td class="align-middle text-center text-sm">
-                                <a href="{{ url('reportpaineditdoc')}}" class="badge badge-sm bg-gradient-success">view</a>
+                                <a href="{{ route('reportpaineditdoc', ['id' => $dt->id])}}" class="badge badge-sm bg-gradient-success">view</a>
                             </td>
                             </tr>
+                            @endforeach
                         </tbody>
                         </table>
                     </div>
