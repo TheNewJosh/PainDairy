@@ -12,44 +12,47 @@
             
             <div class="row">
               <h2>Doctor</h2>
-            <form class="row">
+            <form class="row" method="POST" action="{{ route('doctoreditadmadd')}}">
+               @csrf
+               <input type="hidden" name="id" value="{{ $user->id }}">
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Doctor Name</label>
-                      <input type="text" class="form-control">
+                      <input type="text" value="{{$user->name}}" readonly class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Status  </label>
-                      <select name="" class="form-control">
-                        <option value=""></option>
-                        <option value="1">Block</option>
-                        <option value="1">Delete</option>
+                      <select name="status" class="form-control">
+                        <option value="{{$user->status}}">{{$user->status}}</option>
+                        <option value="active">active</option>
+                        <option value="block">Block</option>
+                        <option value="delete">Delete</option>
                       </select>
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Email</label>
-                      <input type="text" class="form-control">
+                      <input type="text" value="{{$user->email}}" readonly class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Phone</label>
-                      <input type="text" class="form-control">
+                      <input type="text" value="{{$user->phone}}" readonly class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline is-filled mb-3">
                       <label class="form-label">Gender</label>
-                      <input type="text" class="form-control">
+                      <input type="text" value="{{$user->gender}}" readonly class="form-control">
                     </div>
                 </div>
                 
                 <div class="text-center">
-                    <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
+                    <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Submit</button>
                 </div>
             </form>
             </div>

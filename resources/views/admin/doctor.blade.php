@@ -30,29 +30,31 @@
                         <table class="table align-items-center mb-0">
                         <thead>
                             <tr>
-                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">S/N</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Name</th>
                             <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
                             <th class="text-secondary opacity-7"></th>
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($Physician as $dt)
                             <tr>
                             <td>
                                 <div class="d-flex px-2 py-1">
                                 <div class="d-flex flex-column justify-content-center">
-                                    <span class="text-secondary text-xs font-weight-bold">1</span>
+                                    <span class="text-secondary text-xs font-weight-bold">{{$dt->created_at}}</span>
                                 </div>
                                 </div>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">John Ayo</p>
-                                <p class="text-xs text-secondary mb-0">john@gmail.com</p>
+                                <p class="text-xs font-weight-bold mb-0">{{$dt->name}}</p>
+                                <p class="text-xs text-secondary mb-0">{{$dt->email}}</p>
                             </td>
                             <td class="align-middle text-center text-sm">
-                                <a href="{{ url('doctoreditadm')}}" class="badge badge-sm bg-gradient-success">view</a>
+                                <a href="{{ route('doctoreditadm', ['id' => $dt->id])}}" class="badge badge-sm bg-gradient-success">view</a>
                             </td>
                             </tr>
+                            @endforeach
                         </tbody>
                         </table>
                     </div>

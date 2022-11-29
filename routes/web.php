@@ -53,25 +53,15 @@ Route::get('/profiledoc', function () {
     return view('doctor.profile');
 });
 
-Route::get('/dashboardadm', function () {
-    return view('admin.dashboard');
-});
+Route::get('/dashboardadm', [App\Http\Controllers\AdminController::class, 'dashboard'])->name('dashboardadm');
 
-Route::get('/doctoradm', function () {
-    return view('admin.doctor');
-});
+Route::get('/doctoradm', [App\Http\Controllers\AdminController::class, 'doctor'])->name('doctoradm');
+Route::get('/doctoreditadm/{id}/edit', [App\Http\Controllers\AdminController::class, 'doctoredit'])->name('doctoreditadm');
+Route::post('/doctoreditadmadd', [App\Http\Controllers\AdminController::class, 'doctoreditadd'])->name('doctoreditadmadd');
 
-Route::get('/doctoreditadm', function () {
-    return view('admin.doctoredit');
-});
-
-Route::get('/patientadm', function () {
-    return view('admin.patient');
-});
-
-Route::get('/patienteditadm', function () {
-    return view('admin.patientedit');
-});
+Route::get('/patientadm', [App\Http\Controllers\AdminController::class, 'patient'])->name('patientadm');
+Route::get('/patienteditadm/{id}/edit', [App\Http\Controllers\AdminController::class, 'patientedit'])->name('patienteditadm');
+Route::post('/patienteditadmadd', [App\Http\Controllers\AdminController::class, 'patienteditadd'])->name('patienteditadmadd');
 
 Auth::routes();
 
