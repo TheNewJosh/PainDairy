@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\PainRecord;
 use Illuminate\Http\Request;
 use App\Models\HealthCondition;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\DoctorAppointment;
 use Intervention\Image\Facades\Image;
 
@@ -21,10 +22,26 @@ class PatientController extends Controller
         $PainRecord = PainRecord::where('user_id', auth()->user()->id)->get();
         $HealthCondition = HealthCondition::where('user_id', auth()->user()->id)->get();
 
+        $PainRecordSeverity = PainRecord::where('user_id', auth()->user()->id)->pluck('severity')->join(',');
+        $PainRecordWhereHurt = PainRecord::where('user_id', auth()->user()->id)->get('where_hurt'); 
+
+        // return dd($PainRecordWhereHurt->where_hurt);
+
         return view('patient.dashboard', [
             'PainRecord' => $PainRecord,
             'HealthCondition' => $HealthCondition,
+            'PainRecordSeverity' => $PainRecordSeverity,
+            'PainRecordWhereHurt' => $PainRecordWhereHurt,
         ]);
+    }
+
+    public function downloadPDF()
+    {
+        $PainRecord = PainRecord::where('user_id', auth()->user()->id)->get();
+        $pdf = Pdf::loadView('doc.painrecord', [
+            'PainRecord' => $PainRecord
+        ]);
+        return $pdf->download('painrecord.pdf');
     }
 
     public function reportpain()
@@ -91,6 +108,7 @@ class PatientController extends Controller
 
         HealthCondition::create([
             'user_id' => auth()->user()->id,
+            'doctor_id' => auth()->user()->doctor_res,
             'code' => "H/".date('d/m/Y')."/",
             'condition_name' => $request->condition_name,
             'date_diagnosed' => $request->date_diagnosed,

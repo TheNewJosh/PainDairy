@@ -62,14 +62,14 @@
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Picture  </label>
-                      <input type="file" name="image" required class="form-control">
+                      <input type="file" name="image" class="form-control">
                     </div>
                 </div>
                 <div class="col-12 col-xl-6">
                     <div class="input-group input-group-outline mb-3 is-filled">
                       <label class="form-label">Select a Doctor</label>
                       <select name="doctor_res" required class="form-control">
-                        <option value="{{ $data->doctor_res }}">{{ $data->doctor_res }}</option>
+                        <option value="{{ $data->doctor_res }}">{{ $data->UserDoctorRes->name }}</option>
                         @foreach($doctor as $dt)
                         <option value="{{$dt->id}}">{{$dt->name}}</option>
                         @endforeach

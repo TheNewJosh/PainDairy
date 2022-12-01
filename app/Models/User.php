@@ -57,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(HealthCondition::class, 'user_id');
     }
+
+    public function UserDoctorRes()
+    {
+        return $this->belongsTo(User::class, 'doctor_res');
+    }
 }

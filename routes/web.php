@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/dashboard', [App\Http\Controllers\PatientController::class, 'dashboard'])->name('dashboard'); 
+Route::get('/downloadPDF', [App\Http\Controllers\PatientController::class, 'downloadPDF'])->name('downloadPDF'); 
 
 Route::get('/reportpain', [App\Http\Controllers\PatientController::class, 'reportpain'])->name('reportpain'); 
 Route::post('/reportpainadd', [App\Http\Controllers\PatientController::class, 'reportpainadd'])->name('reportpainadd'); 

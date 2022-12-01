@@ -49,7 +49,7 @@
                                 </div>
                             </td>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">{{$dt->code}}{{str_pad($dt->id,4,"0",STR_PAD_LEFT)}}</p>
+                                <p class="text-xs font-weight-bold mb-0">{{$dt->comment}}</p>
                                 <p class="text-xs text-secondary mb-0">{{$dt->UserDoctor->name}}</p>
                             </td>
                             <td class="align-middle text-center text-sm">
